@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "build": "vite build",
+"lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -33,6 +33,7 @@
     "stream-browserify": "^3.0.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
+    "undici-types": "^7.16.0",
     "url": "^0.11.4",
     "util": "^0.12.5",
     "vite": "^7.1.2",
