@@ -1,0 +1,20 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  
+  "compilerOptions": {
+    "moduleResolution": "nodenext",
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "target": "es2022",
+    "lib": ["es2022", "dom"],
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+  
+  
+}
