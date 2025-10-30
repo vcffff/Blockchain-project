@@ -91,5 +91,5 @@ Linting: ESLint 9, TypeScript-ESLint
 
    Phantom wallet connection and NFT operations are simulated locally.
    
-   Programe:# https://blockchain-project-lilac.vercel.app
+   Programe: https://blockchain-project-lilac.vercel.app
 
