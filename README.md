@@ -81,7 +81,7 @@ Linting: ESLint 9, TypeScript-ESLint
 4. Start the development server
    npm run dev
 
-  The app will be available at http://localhost:5173/
+   The app will be available at http://localhost:5173/
 
 4. Tech notes
 
