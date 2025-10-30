@@ -12,15 +12,14 @@ Magzhan Skakov (https://github.com/vcffff) (https://x.com/MagzhanSka21914)
 
 # Resources
 
-figma presentation:
+Figma Presentation:
 https://www.figma.com/proto/UGZgBUPgD1J84hAntjveDQ/Agrolink-Presentation?page-id=0%3A1&node-id=2026-41&p=f&viewport=-316%2C-614%2C0.7&t=Ub8YYz8KGP0mKT0r-1&scaling=contain&content-scaling=fixed
 
-platform AGROLINK:
-https://blockchain-project-lilac.vercel.app (https://blockchain-project-lilac.vercel.app/)
+Platform (Demo):
+https://blockchain-project-lilac.vercel.app
 
-Landing Page:
-YouTube Video:
-
+Landing Page / YouTube Video:
+(link to be added)
 
 ```js
 export default tseslint.config([
