@@ -65,4 +65,25 @@ Linting: ESLint 9, TypeScript-ESLint
 # Architecture
 <img width="700" height="1080" alt="ChatGPT Image Oct 30, 2025, 04_14_54 PM" src="https://github.com/user-attachments/assets/82822488-e408-4a4c-bada-18ac2b4dbb22" />
 
+# Quick Start Guide
+
+1. Clone the repository
+git clone https://github.com/vcffff/Blockchain-project.git
+cd Blockchain-project/AgroLink
+
+2. Install dependencies
+Make sure you have Node.js 18+ and npm 9+ installed.
+Then run:
+npm install
+
+3. Start the development server
+npm run dev
+
+The app will be available at http://localhost:5173/
+
+4. Tech notes
+
+No external API keys required (demo-mode only).
+Works on Vite 7 with React 19 + TypeScript.
+Phantom wallet connection and NFT operations are simulated locally.
 
