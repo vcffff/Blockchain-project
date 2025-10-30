@@ -64,6 +64,6 @@ Build & Dev Server: Vite 7
 Linting: ESLint 9, TypeScript-ESLint
 
 # Architecture
-<img width="1024" height="1536" alt="ChatGPT Image Oct 30, 2025, 04_14_54 PM" src="https://github.com/user-attachments/assets/82822488-e408-4a4c-bada-18ac2b4dbb22" />
+<img width="1080" height="1350" alt="ChatGPT Image Oct 30, 2025, 04_14_54 PM" src="https://github.com/user-attachments/assets/82822488-e408-4a4c-bada-18ac2b4dbb22" />
 
 
