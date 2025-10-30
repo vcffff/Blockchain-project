@@ -21,7 +21,15 @@ https://blockchain-project-lilac.vercel.app
 Landing Page / YouTube Video:
 (link to be added)
 
-```js
+# Problem and solution
+The poultry industry is a $400+ billion global market, but it remains opaque.
+Farmers depend on intermediaries and lack direct access to investments.
+
+Our Solution
+Every chicken item gets a unique digital token proving its origin and quality.
+Liquidity for farmers, stable income for investors
+
+
 export default tseslint.config([
   globalIgnores(['dist']),
   {
