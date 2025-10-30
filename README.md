@@ -1,4 +1,4 @@
-    # Submission to 2025 Solana Colosseum Submission by:
+# Submission to 2025 Solana Colosseum Submission by:
 Roman Jaishibekov (https://www.instagram.com/mrromenion/) 
 Batumukhammed Beksultan (https://x.com/cil_mann41719) (https://github.com/BATU994) 
 Kanat Aldabek (https://www.instagram.com/kaneke_design/) (https://www.behance.net/45ba0a97)
