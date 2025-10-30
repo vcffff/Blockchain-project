@@ -10,16 +10,15 @@ Galymbek Muratbay (https://www.behance.net/galymbemuratba) (https://smart-direct
 
 Magzhan Skakov (https://github.com/vcffff) (https://x.com/MagzhanSka21914)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Resources
 
-Currently, two official plugins are available:
+figma presentation:
+https://www.figma.com/proto/UGZgBUPgD1J84hAntjveDQ/Agrolink-Presentation?page-id=0%3A1&node-id=2026-41&p=f&viewport=-316%2C-614%2C0.7&t=Ub8YYz8KGP0mKT0r-1&scaling=contain&content-scaling=fixed
+platform AGROLINK:
+https://blockchain-project-lilac.vercel.app (https://blockchain-project-lilac.vercel.app/)
+Landing Page:
+YouTube Video:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
 ```js
 export default tseslint.config([
