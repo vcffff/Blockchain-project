@@ -69,18 +69,18 @@ Linting: ESLint 9, TypeScript-ESLint
 # Quick Start Guide
 
 1. Clone the repository
-git clone https://github.com/vcffff/Blockchain-project.git
-cd Blockchain-project/AgroLink
+   git clone https://github.com/vcffff/Blockchain-project.git
+   cd Blockchain-project/AgroLink
 
 2. Install dependencies
-Make sure you have Node.js 18+ and npm 9+ installed.
-Then run:
-npm install
+   Make sure you have Node.js 18+ and npm 9+ installed.
+   Then run:
+   npm install
 
 3. Start the development server
-npm run dev
+   npm run dev
 
-The app will be available at http://localhost:5173/
+  The app will be available at http://localhost:5173/
 
 4. Tech notes
 
