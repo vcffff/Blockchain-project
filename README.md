@@ -29,27 +29,23 @@ Our Solution
 Every chicken item gets a unique digital token proving its origin and quality.
 Liquidity for farmers, stable income for investors
 
+# Summary of Submission Features
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
+Role-based demo login (Investor/Retailer or Poultry Farm)
 
-      ...tseslint.configs.recommendedTypeChecked,
-      ...tseslint.configs.strictTypeChecked,
-      ...tseslint.configs.stylisticTypeChecked,
+Farm catalog with NFT product batches
 
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
-])
-```
+Demo NFT purchase & price offer flow
+
+Seller dashboard with offer management & shipment status
+
+Sales analytics: bar chart, funnel, revenue trend
+
+Simulated Phantom wallet connection & royalty balance
+
+Demo payout with masked IBAN verification
+
+Help modal, smooth animations, and landing page with info blocks
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
