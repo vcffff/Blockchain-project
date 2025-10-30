@@ -4,7 +4,7 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
-  
+
   "compilerOptions": {
     "moduleResolution": "nodenext",
     "jsx": "react-jsx",
@@ -13,8 +13,7 @@
     "lib": ["es2022", "dom"],
     "strict": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["react", "react-dom"]
   }
-  
-  
 }
