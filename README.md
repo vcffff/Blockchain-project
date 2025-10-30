@@ -49,24 +49,16 @@ Help modal, smooth animations, and landing page with info blocks
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+#Tech Stack
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      reactX.configs['recommended-typescript'],
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
-])
-```
+UI: React 19, TypeScript, Vite
+
+Blockchain SDKs: @solana/web3.js, wallet-adapter (Phantom demo connection), @metaplex-foundation/js
+
+Styling: Custom utility classes (Tailwind-style), CSS
+
+State Management: React hooks + localStorage (demo persistence)
+
+Build & Dev Server: Vite 7
+
+Linting: ESLint 9, TypeScript-ESLint
