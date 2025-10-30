@@ -1,8 +1,13 @@
 # Submission to 2025 Solana Colosseum Submission by:
+
 Roman Jaishibekov (https://www.instagram.com/mrromenion/) 
-Batumukhammed Beksultan (https://x.com/cil_mann41719) (https://github.com/BATU994) 
+
+Batumukhammed Beksultan (https://x.com/cil_mann41719) (https://github.com/BATU994)
+
 Kanat Aldabek (https://www.instagram.com/kaneke_design/) (https://www.behance.net/45ba0a97)
+
 Galymbek Muratbay (https://www.behance.net/galymbemuratba) (https://smart-directions-578401.framer.app/)
+
 Magzhan Skakov (https://github.com/vcffff) (https://x.com/MagzhanSka21914)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
