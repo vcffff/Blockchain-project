@@ -18,7 +18,10 @@ https://www.figma.com/proto/UGZgBUPgD1J84hAntjveDQ/Agrolink-Presentation?page-id
 Platform (Demo):
 https://blockchain-project-lilac.vercel.app
 
-Landing Page / YouTube Video:
+Landing Page:
+https://chickchain.vercel.app/
+
+YouTube Video:
 (link to be added)
 
 # Problem and solution
