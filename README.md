@@ -83,9 +83,9 @@ The app will be available at http://localhost:5173/
 
 4. Tech notes
 
-No external API keys required (demo-mode only).
+ No external API keys required (demo-mode only).
 
-Works on Vite 7 with React 19 + TypeScript.
+ Works on Vite 7 with React 19 + TypeScript.
 
-Phantom wallet connection and NFT operations are simulated locally.
+ Phantom wallet connection and NFT operations are simulated locally.
 
