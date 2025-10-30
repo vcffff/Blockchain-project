@@ -44,16 +44,16 @@ export default function NavBar({
               current === t ? "bg-white text-black" : "bg-white/10 text-white hover:bg-white/20"
             }`}
           >
-            {t === "landing" && "Главная"}
-            {t === "farms" && "Птицофабрики"}
-            {t === "album" && "Продукция"}
-            {t === "dashboard" && "Кабинет"}
-            {t === "artist" && "Птицофабрика"}
-            {t === "factoryAnalytics" && "Аналитика"}
+            {t === "landing" && "Home"}
+            {t === "farms" && "Farms"}
+            {t === "album" && "Products"}
+            {t === "dashboard" && "Dashboard"}
+            {t === "artist" && "Factory"}
+            {t === "factoryAnalytics" && "Analytics"}
           </button>
         ))}
         <button onClick={onOpenWithdraw} className="px-3 py-1 rounded-xl text-sm bg-white/10 hover:bg-white/20 text-white">
-          Вывод (демо)
+          Withdraw (demo)
         </button>
         {user && (
           <div className="flex items-center gap-2 ml-2">
@@ -69,7 +69,7 @@ export default function NavBar({
             disabled={walletConnecting}
             className="ml-2 px-4 py-2 rounded-xl bg-lime-400 text-black font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {walletConnecting ? "Подключение..." : "Подключить кошелёк"}
+            {walletConnecting ? "Connecting..." : "Connect wallet"}
           </button>
         ) : (
           <button onClick={disconnectWallet} className="ml-2 px-4 py-2 rounded-xl bg-fuchsia-500 text-white font-semibold">

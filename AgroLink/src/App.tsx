@@ -233,52 +233,50 @@ export default function App() {
     localStorage.setItem("wallet:sol", String(walletSolBalance));
   }, [walletSolBalance]);
 
-  const [albumTitle, setAlbumTitle] = useState("Птицофабрика №1");
+  const [albumTitle, setAlbumTitle] = useState("Poultry Farm #1");
   const [albumCover, setAlbumCover] = useState("/main.jpg");
 
   const [tracks, setTracks] = useState<Track[]>([
-    { id: 1, title: "Голень" },
-    { id: 2, title: "Яйцо" },
-    { id: 3, title: "Крылышки" },
-    { id: 4, title: "Филе" },
-    { id: 5, title: "Тушка" },
-    { id: 6, title: "Переработка" },
+    { id: 1, title: "Drumstick" },
+    { id: 2, title: "Egg" },
+    { id: 3, title: "Wings" },
+    { id: 4, title: "Fillet" },
+    { id: 5, title: "Whole chicken" },
+    { id: 6, title: "Processing" },
   ]);
 
   const farms: Farm[] = useMemo(
     () => [
       {
         id: 1,
-        name: "ТОО «Аса Агро»",
+        name: "LLP 'Asa Agro'",
         cover: "/asa-agro-logo.jpeg",
-        description:
-          "Качественная продукция с полным трассингом происхождения.",
+        description: "High-quality products with full traceability of origin.",
       },
       {
         id: 2,
-        name: "ТОО «Алель Агро» / АО «Алель Агро»",
+        name: "LLP 'Alel Agro' / JSC 'Alel Agro'",
         cover: "/alel-agro-logo.jpg",
-        description:
-          "Современные мощности и стандарты безопасности пищевых продуктов.",
+        description: "Modern facilities and food safety standards.",
       },
       {
         id: 3,
-        name: "ТОО «Аулие-Ата Феникс»",
+        name: "LLP 'Aulie-Ata Phoenix'",
         cover: "/aulata-logo.jpg",
-        description: "Высокое качество и устойчивые практики производства.",
+        description: "High quality and sustainable production practices.",
       },
       {
         id: 4,
-        name: "ТОО «Жамбыл кус»",
+        name: "LLP 'Zhambyl Kus'",
         cover: "/Zhambylkus-logo.png",
-        description: "Проверенное происхождение и прозрачная логистика.",
+        description: "Verified origin and transparent logistics.",
       },
       {
         id: 5,
-        name: "ТОО «Жамбылская птицефабрика»",
+        name: "LLP 'Zhambyl Poultry Factory'",
         cover: "/zhambyl-logo.png",
         description:
-          "Крупнейший производитель региона с инновационным подходом.",
+          "The region’s largest producer with an innovative approach.",
       },
     ],
     []
@@ -286,20 +284,20 @@ export default function App() {
 
   const initialNfts: NftItem[] = useMemo(() => {
     const baseProducts = [
-      "Голень",
-      "Яйцо",
-      "Крылышки",
-      "Филе",
-      "Тушка",
-      "Переработка",
+      "Drumstick",
+      "Egg",
+      "Wings",
+      "Fillet",
+      "Whole chicken",
+      "Processing",
     ];
     const productImageMap: Record<string, string> = {
-      Голень: "/golen.png",
-      Яйцо: "/eggs.png",
-      Крылышки: "/wings.jpeg",
-      Филе: "/fillet.png",
-      Тушка: "/tushka.png",
-      Переработка: "/pererabotka.webp",
+      Drumstick: "/golen.png",
+      Egg: "/eggs.png",
+      Wings: "/wings.jpeg",
+      Fillet: "/fillet.png",
+      "Whole chicken": "/tushka.png",
+      Processing: "/pererabotka.webp",
     };
     let idCounter = 1;
     const items: NftItem[] = [];
@@ -310,7 +308,7 @@ export default function App() {
           name: `${pName} — ${farm.name}`,
           priceSOL: 1,
           image: `${productImageMap[pName]}`,
-          caption: `Партия №${idx + 1}`,
+          caption: `Batch #${idx + 1}`,
           owned: false,
           farmId: farm.id,
         });
@@ -399,29 +397,29 @@ export default function App() {
         : {};
 
       if (!username) {
-        setAuthError("Введите логин");
+        setAuthError("Enter username");
         setAuthLoading(false);
         return;
       }
       if (password.length < 4) {
-        setAuthError("Пароль минимум 4 символа");
+        setAuthError("Password must be at least 4 characters");
         setAuthLoading(false);
         return;
       }
 
       if (authMode === "signup") {
         if (users[username]) {
-          setAuthError("Пользователь уже существует");
+          setAuthError("User already exists");
           setAuthLoading(false);
           return;
         }
         if (confirm !== password) {
-          setAuthError("Пароли не совпадают");
+          setAuthError("Passwords do not match");
           setAuthLoading(false);
           return;
         }
         if (selectedRole === "factory" && !selectedFarmId) {
-          setAuthError("Выберите птицофабрику");
+          setAuthError("Select a poultry factory");
           setAuthLoading(false);
           return;
         }
@@ -438,20 +436,20 @@ export default function App() {
 
       const userRecord = users[username];
       if (!userRecord) {
-        setAuthError("Неверный логин или пароль");
+        setAuthError("Invalid username or password");
         setAuthLoading(false);
         return;
       }
       if (typeof userRecord === "string") {
         if (userRecord !== password) {
-          setAuthError("Неверный логин или пароль");
+          setAuthError("Invalid username or password");
           setAuthLoading(false);
           return;
         }
         setUser({ username, role: "investor" });
       } else {
         if (userRecord.password !== password) {
-          setAuthError("Неверный логин или пароль");
+          setAuthError("Invalid username or password");
           setAuthLoading(false);
           return;
         }
@@ -474,7 +472,7 @@ export default function App() {
     return (
       <>
         <div>
-          <label className="text-sm text-white/70">Тип аккаунта</label>
+          <label className="text-sm text-white/70">Account type</label>
           <select
             name="role"
             className="mt-1 w-full rounded-xl bg-black/50 border border-white/10 p-3 outline-none"
@@ -483,14 +481,14 @@ export default function App() {
               setSignupRole(e.target.value as "factory" | "investor")
             }
           >
-            <option value="factory">Птицофабрика</option>
-            <option value="investor">Инвестор/ритейлер</option>
+            <option value="factory">Poultry factory</option>
+            <option value="investor">Investor/Retailer</option>
           </select>
         </div>
         {signupRole === "factory" && (
           <div>
             <label className="text-sm text-white/70">
-              Выберите птицофабрику
+              Select poultry factory
             </label>
             <select
               name="farmId"
@@ -516,7 +514,7 @@ export default function App() {
 
   const buyNft = async (id: number) => {
     if (!connected || !phantomPubkey) {
-      alert("Подключите Phantom Wallet");
+      alert("Connect Phantom Wallet");
       return;
     }
 
@@ -537,14 +535,14 @@ export default function App() {
       setTransactionHash(txHash);
       setLastPurchase({ id, ts: Date.now() });
 
-      alert(`Покупка успешна: NFT #${id}\nТранзакция: ${txHash}`);
+      alert(`Purchase successful: NFT #${id}\nTransaction: ${txHash}`);
     } catch (error) {
       setTransactionStatus("error");
       setTransactionError(
         error instanceof Error ? error.message : "Purchase failed"
       );
       alert(
-        `Ошибка покупки: ${
+        `Purchase error: ${
           error instanceof Error ? error.message : "Unknown error"
         }`
       );
@@ -558,7 +556,7 @@ export default function App() {
 
   const submitOffer = () => {
     if (!user) {
-      alert("Войдите, чтобы отправить предложение");
+      alert("Sign in to send an offer");
       return;
     }
     if (!offerModal.nftId) return;
@@ -604,15 +602,15 @@ export default function App() {
     if (fiatSubmitting) return;
     const amount = Math.max(0.1, Number(fiatAmountDraft) || 0);
     if (!user) {
-      alert("Войдите, чтобы вывести средства");
+      alert("Sign in to withdraw funds");
       return;
     }
     if (!amount || amount <= 0 || amount > walletSolBalance) {
-      alert("Некорректная сумма вывода");
+      alert("Invalid withdrawal amount");
       return;
     }
     if (!fiatNameDraft.trim() || !fiatIbanDraft.trim()) {
-      alert("Заполните реквизиты получателя");
+      alert("Fill in beneficiary details");
       return;
     }
     setFiatSubmitting(true);
@@ -642,14 +640,14 @@ export default function App() {
       setFiatSubmitting(false);
       setShowFiatWithdraw(false);
       alert(
-        "Заявка на вывод принята. Поступит в течение 2 рабочих дней (демо)."
+        "Withdrawal request accepted. Funds will arrive within 2 business days (demo)."
       );
     }, 1000);
   };
 
   const withdrawRoyalty = async () => {
     if (!connected || !phantomPubkey) {
-      alert("Подключите Phantom Wallet");
+      alert("Connect Phantom Wallet");
       return;
     }
 
@@ -668,14 +666,14 @@ export default function App() {
       setTransactionStatus("success");
       setTransactionHash(txHash);
 
-      alert(`ROYALTY выведены\nТранзакция: ${txHash}`);
+      alert(`ROYALTY withdrawn\nTransaction: ${txHash}`);
     } catch (error) {
       setTransactionStatus("error");
       setTransactionError(
         error instanceof Error ? error.message : "Withdrawal failed"
       );
       alert(
-        `Ошибка вывода: ${
+        `Withdrawal error: ${
           error instanceof Error ? error.message : "Unknown error"
         }`
       );
@@ -684,7 +682,7 @@ export default function App() {
 
   const mintAlbumNfts = async () => {
     if (!connected || !phantomPubkey) {
-      alert("Подключите Phantom Wallet артиста");
+      alert("Connect artist's Phantom Wallet");
       return;
     }
 
@@ -705,14 +703,14 @@ export default function App() {
       setTransactionStatus("success");
       setTransactionHash(collectionId);
 
-      alert(`Коллекция создана!\nID коллекции: ${collectionId}`);
+      alert(`Collection created!\nCollection ID: ${collectionId}`);
     } catch (error) {
       setTransactionStatus("error");
       setTransactionError(
         error instanceof Error ? error.message : "Minting failed"
       );
       alert(
-        `Ошибка создания коллекции: ${
+        `Mint error: ${
           error instanceof Error ? error.message : "Unknown error"
         }`
       );
@@ -721,7 +719,7 @@ export default function App() {
 
   const addPayout = async (amount: number) => {
     if (!connected || !phantomPubkey) {
-      alert("Подключите Phantom Wallet");
+      alert("Connect Phantom Wallet");
       return;
     }
 
@@ -734,7 +732,7 @@ export default function App() {
         .map((n) => phantomPubkey);
 
       if (fanAddresses.length === 0) {
-        alert("Нет владельцев NFT для распределения роялти");
+        alert("No NFT owners to distribute royalty");
         return;
       }
 
@@ -747,14 +745,14 @@ export default function App() {
       setTransactionStatus("success");
       setTransactionHash(txHash);
 
-      alert(`Роялти распределены\nТранзакция: ${txHash}`);
+      alert(`Royalty distributed\nTransaction: ${txHash}`);
     } catch (error) {
       setTransactionStatus("error");
       setTransactionError(
         error instanceof Error ? error.message : "Distribution failed"
       );
       alert(
-        `Ошибка распределения: ${
+        `Distribution error: ${
           error instanceof Error ? error.message : "Unknown error"
         }`
       );
@@ -769,8 +767,8 @@ export default function App() {
             <div className="text-5xl font-black text-white">AgroLink</div>
             <div className="text-white/70 text-sm mt-1">
               {authMode === "login"
-                ? "Войдите, чтобы продолжить"
-                : "Зарегистрируйтесь, чтобы продолжить"}
+                ? "Sign in to continue"
+                : "Sign up to continue"}
             </div>
           </div>
           <form onSubmit={handleLogin} className="p-6 space-y-4">
@@ -780,7 +778,7 @@ export default function App() {
               </div>
             )}
             <div>
-              <label className="text-sm text-white/70">Логин</label>
+              <label className="text-sm text-white/70">Username</label>
               <input
                 title="confirm"
                 name="username"
@@ -789,7 +787,7 @@ export default function App() {
               />
             </div>
             <div>
-              <label className="text-sm text-white/70">Пароль</label>
+              <label className="text-sm text-white/70">Password</label>
               <input
                 title="confirm"
                 name="password"
@@ -801,7 +799,7 @@ export default function App() {
             {authMode === "signup" && (
               <div>
                 <label className="text-sm text-white/70">
-                  Подтвердите пароль
+                  Confirm password
                 </label>
                 <input
                   title="confirm"
@@ -818,11 +816,11 @@ export default function App() {
             >
               {authLoading
                 ? authMode === "login"
-                  ? "Входим…"
-                  : "Регистрируем…"
+                  ? "Signing in…"
+                  : "Signing up…"
                 : authMode === "login"
-                ? "Войти"
-                : "Зарегистрироваться"}
+                ? "Sign in"
+                : "Sign up"}
             </button>
             <div className="text-xs text-white/50 text-center">
               {authMode === "login" ? (
@@ -834,7 +832,7 @@ export default function App() {
                   }}
                   className="underline underline-offset-4"
                 >
-                  Нет аккаунта? Зарегистрируйтесь
+                  No account? Sign up
                 </button>
               ) : (
                 <button
@@ -845,7 +843,7 @@ export default function App() {
                   }}
                   className="underline underline-offset-4"
                 >
-                  Уже есть аккаунт? Войти
+                  Already have an account? Sign in
                 </button>
               )}
             </div>
@@ -880,9 +878,9 @@ export default function App() {
               <div className="text-red-400">✗</div>
             )}
             <div className="text-sm">
-              {transactionStatus === "pending" && "Обработка транзакции..."}
-              {transactionStatus === "success" && "Транзакция успешна!"}
-              {transactionStatus === "error" && "Ошибка транзакции"}
+              {transactionStatus === "pending" && "Processing transaction..."}
+              {transactionStatus === "success" && "Transaction successful!"}
+              {transactionStatus === "error" && "Transaction error"}
             </div>
           </div>
           {transactionHash && transactionStatus === "success" && (
@@ -901,7 +899,7 @@ export default function App() {
             }}
             className="mt-2 text-xs underline text-white/70 hover:text-white"
           >
-            Закрыть
+            Close
           </button>
         </div>
       </div>
@@ -934,19 +932,19 @@ export default function App() {
                   : "bg-white/10 text-white hover:bg-white/20"
               }`}
             >
-              {t === "landing" && "Главная"}
-              {t === "farms" && "Птицофабрики"}
-              {t === "album" && "Продукция"}
-              {t === "dashboard" && "Кабинет"}
-              {t === "artist" && "Птицофабрика"}
-              {t === "factoryAnalytics" && "Аналитика"}
+              {t === "landing" && "Home"}
+              {t === "farms" && "Poultry Farms"}
+              {t === "album" && "Products"}
+              {t === "dashboard" && "Dashboard"}
+              {t === "artist" && "Poultry Farm"}
+              {t === "factoryAnalytics" && "Analytics"}
             </button>
           ))}
           <button
             onClick={() => setShowHelp(true)}
             className="px-3 py-1 rounded-xl text-sm bg-white/10 hover:bg-white/20 text-white"
           >
-            Помощь
+            Help
           </button>
           {user && (
             <div className="flex items-center gap-2 ml-2">
@@ -958,7 +956,7 @@ export default function App() {
                 }}
                 className="px-3 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-sm"
               >
-                Вывод (демо)
+                Withdraw (demo)
               </button>
               <button
                 onClick={logout}
@@ -968,6 +966,7 @@ export default function App() {
               </button>
             </div>
           )}
+
           {!connected ? (
             <button
               onClick={connectWallet}
@@ -1010,10 +1009,8 @@ export default function App() {
       {showWallet && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 modal-fade">
           <div className="w-full max-w-md rounded-2xl border border-white/10 bg-[#0b0014] p-6">
-            <div className="text-lg font-semibold mb-2">Подключить кошелёк</div>
-            <div className="text-white/70 text-sm mb-4">
-              Выберите провайдера
-            </div>
+            <div className="text-lg font-semibold mb-2">Connect wallet</div>
+            <div className="text-white/70 text-sm mb-4">Select provider</div>
             <div className="space-y-2">
               <button
                 onClick={() => setShowPhantomConfirm(true)}
@@ -1029,7 +1026,7 @@ export default function App() {
                     className="h-6 w-6"
                   />
                 )}
-                {walletConnecting ? "Подключение..." : "Phantom Wallet"}
+                {walletConnecting ? "Connecting..." : "Phantom Wallet"}
               </button>
               <a
                 rel="noopener"
@@ -1037,7 +1034,7 @@ export default function App() {
                 target="_blank"
                 className="block text-center text-sm text-white/70 underline underline-offset-4"
               >
-                У меня нет Phantom — установить
+                I don't have Phantom — install
               </a>
             </div>
             <div className="flex justify-end mt-4">
@@ -1051,94 +1048,63 @@ export default function App() {
           </div>
         </div>
       )}
-      {showPhantomConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-          <div className="w-full max-w-lg rounded-2xl border border-white/10 bg-[#08130f] p-6">
-            <div className="flex items-center gap-3 mb-3">
-              <img
-                alt="Phantom"
-                src="https://assets.phantom.app/phantom-logo.png"
-                className="h-8 w-8"
-              />
-              <div className="text-lg font-semibold">Подключение Phantom</div>
-            </div>
-            <div className="text-white/80 text-sm leading-relaxed">
-              Для продолжения подтвердите подключение кошелька Phantom к
-              AgroLink. Подключение позволит:
-              <ul className="list-disc pl-5 mt-2 space-y-1 text-white/70">
-                <li>Просматривать адрес кошелька и баланс</li>
-                <li>Совершать покупки токенов продукции</li>
-                <li>Подписывать транзакции в сети Solana</li>
-              </ul>
-            </div>
-            <div className="mt-4 flex items-center justify-end gap-2">
-              <button
-                onClick={() => setShowPhantomConfirm(false)}
-                className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20"
-              >
-                Отмена
-              </button>
-              <button
-                onClick={doConnectPhantom}
-                disabled={walletConnecting}
-                className="px-4 py-2 rounded-xl bg-lime-400 text-black font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                {walletConnecting ? "Подключение..." : "Согласен и подключить"}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
       {showHelp && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
           <div className="w-full max-w-3xl rounded-2xl border border-white/10 bg-[#0b0014] p-6">
             <div className="flex items-center justify-between">
-              <div className="text-lg font-semibold">
-                Как пользоваться AgroLink
-              </div>
+              <div className="text-lg font-semibold">How to use AgroLink</div>
               <button
                 onClick={() => setShowHelp(false)}
                 className="px-3 py-1 rounded-xl bg-white/10 hover:bg-white/20"
               >
-                Закрыть
+                Close
               </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 text-sm text-white/80">
               <div className="space-y-2">
-                <div className="font-semibold text-white">Для покупателя</div>
+                <div className="font-semibold text-white">For Buyers</div>
                 <ol className="list-decimal list-inside space-y-1">
-                  <li>Зарегистрируйтесь как инвестор/ритейлер.</li>
-                  <li>Откройте вкладку «Продукция», выберите NFT партии.</li>
+                  <li>Register as an investor/retailer.</li>
+                  <li>Open the “Products” tab and select a batch NFT.</li>
                   <li>
-                    Купите по цене или нажмите «Предложить цену» и отправьте
-                    оффер.
+                    Buy at the listed price or click “Make an offer” to send an
+                    offer.
                   </li>
-                  <li>Статусы и история — во вкладке «Кабинет».</li>
+                  <li>
+                    Statuses and history are available in the “Dashboard” tab.
+                  </li>
                 </ol>
-                <div className="mt-3 font-semibold text-white">Советы</div>
+                <div className="mt-3 font-semibold text-white">Tips</div>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Смотрите описание фабрики во вкладке «Птицофабрики».</li>
-                  <li>Используйте кошелёк Phantom для реальных транзакций.</li>
+                  <li>
+                    Check the factory description in the “Poultry Farms” tab.
+                  </li>
+                  <li>Use the Phantom wallet for real transactions.</li>
                 </ul>
               </div>
               <div className="space-y-2">
-                <div className="font-semibold text-white">Для птицофабрики</div>
+                <div className="font-semibold text-white">
+                  For Poultry Farms
+                </div>
                 <ol className="list-decimal list-inside space-y-1">
                   <li>
-                    Зарегистрируйтесь как «Птицофабрика» и выберите предприятие.
+                    Register as a “Poultry Farm” and select your enterprise.
                   </li>
                   <li>
-                    Во вкладке «Птицофабрика» создайте партию и выпустите NFT.
+                    In the “Poultry Farm” tab, create a batch and issue an NFT.
                   </li>
-                  <li>
-                    Следите за офферами покупателей и принимайте/отклоняйте.
-                  </li>
-                  <li>Аналитику смотрите во вкладке «Аналитика».</li>
+                  <li>Track buyers’ offers and accept or reject them.</li>
+                  <li>View analytics in the “Analytics” tab.</li>
                 </ol>
-                <div className="mt-3 font-semibold text-white">Подсказки</div>
+                <div className="mt-3 font-semibold text-white">Hints</div>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Улучшайте конверсию акциями и баннерами на главной.</li>
-                  <li>Тестируйте цену: +10–15% при высокой конверсии.</li>
+                  <li>
+                    Increase conversion with promotions and banners on the
+                    homepage.
+                  </li>
+                  <li>
+                    Experiment with pricing: +10–15% if conversion is high.
+                  </li>
                 </ul>
               </div>
             </div>
@@ -1149,14 +1115,14 @@ export default function App() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 modal-fade">
           <div className="w-full max-w-lg rounded-2xl border border-white/10 bg-[#0b0014] p-6">
             <div className="text-lg font-semibold mb-2">
-              Вывод на банковские реквизиты
+              Withdrawal to Bank Details
             </div>
             <div className="text-white/70 text-sm mb-4">
-              Данные конфиденциальны и не сохраняются (демо).
+              The data is confidential and not saved (demo).
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
-                <label className="text-sm text-white/70">Сумма (SOL)</label>
+                <label className="text-sm text-white/70">Amount (SOL)</label>
                 <input
                   type="text"
                   inputMode="decimal"
@@ -1176,12 +1142,12 @@ export default function App() {
                   className="mt-1 w-full rounded-xl bg-black/50 border border-white/10 p-3 outline-none"
                 />
                 <div className="text-xs text-white/50 mt-1">
-                  Доступно: {walletSolBalance.toFixed(2)} SOL
+                  Available: {walletSolBalance.toFixed(2)} SOL
                 </div>
               </div>
               <div>
                 <label className="text-sm text-white/70">
-                  Получатель (ФИО/Компания)
+                  Recipient (Full Name / Company)
                 </label>
                 <input
                   value={fiatNameDraft}
@@ -1190,7 +1156,7 @@ export default function App() {
                 />
               </div>
               <div className="md:col-span-2">
-                <label className="text-sm text-white/70">IBAN/Счёт</label>
+                <label className="text-sm text-white/70">IBAN / Account</label>
                 <input
                   value={fiatIbanDraft}
                   onChange={(e) => setFiatIbanDraft(e.target.value)}
@@ -1198,7 +1164,7 @@ export default function App() {
                 />
                 {fiatIbanDraft && (
                   <div className="text-xs text-white/50 mt-1">
-                    Будет отправлено на: {fiatIbanDraft.slice(0, 4)}****
+                    Will be sent to: {fiatIbanDraft.slice(0, 4)}****
                     {fiatIbanDraft.slice(-4)}
                   </div>
                 )}
@@ -1210,19 +1176,19 @@ export default function App() {
                 disabled={fiatSubmitting}
                 className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20"
               >
-                Отмена
+                Cancel
               </button>
               <button
                 onClick={confirmFiatWithdraw}
                 disabled={fiatSubmitting}
                 className="px-4 py-2 rounded-xl bg-lime-400 text-black font-semibold disabled:opacity-60"
               >
-                {fiatSubmitting ? "Проверяем…" : "Подтвердить вывод"}
+                {fiatSubmitting ? "Verifying…" : "Confirm Withdrawal"}
               </button>
             </div>
             <div className="text-xs text-white/50 mt-2">
-              После подтверждения: "Заявка принята. Поступит в течение 2 рабочих
-              дней"
+              After confirmation: "Request accepted. It will be processed within
+              2 business days."
             </div>
           </div>
         </div>
@@ -1234,42 +1200,42 @@ export default function App() {
     <Shell>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div>
-          <h1 className="text-4xl md:text-5xl font-black leading-tight">
-            Инвестируй в агроактивы —{" "}
+          <h1 className="text-5xl md:text-6xl font-black leading-tight">
+            Invest in agro-assets —{" "}
             <span className="text-lime-400">
-              становись совладельцем продукции
+              become a co-owner of the production
             </span>
           </h1>
           <p className="mt-4 text-white/80 max-w-prose">
-            AgroLink на Solana: каждый продукт или партия — это NFT,
-            подтверждающий происхождение, количество и качество. Инвесторы
-            получают доход при продаже, ритейлеры и агрохолдинги отслеживают
-            путь «от фермы до прилавка».
+            AgroLink on Solana: every product or batch is an NFT that confirms
+            its origin, quantity, and quality. Investors earn income from sales,
+            while retailers and agroholdings can trace the full path “from farm
+            to shelf.”
           </p>
           <div className="mt-6 flex gap-3">
             <button
               onClick={() => setTab("artist")}
               className="px-5 py-3 rounded-2xl bg-fuchsia-500 hover:bg-fuchsia-600 font-semibold btn-hover"
             >
-              Завести партию (для птицофабрики)
+              Create a Batch (for Poultry Farms)
             </button>
             <button
               onClick={() => setTab("album")}
               className="px-5 py-3 rounded-2xl bg-lime-400 hover:bg-lime-300 text-black font-semibold btn-hover"
             >
-              Купить NFT‑продукцию (инвестор/ритейлер)
+              Buy NFT Products (Investor / Retailer)
             </button>
             <button
               onClick={() => setTab("farms")}
               className="px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold btn-hover"
             >
-              Птицофабрики
+              Poultry Farms
             </button>
             <button
               onClick={() => setShowHelp(true)}
               className="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold btn-hover"
             >
-              Как это работает
+              How It Works
             </button>
           </div>
         </div>
@@ -1282,7 +1248,7 @@ export default function App() {
           <div className="absolute -bottom-6 left-6 right-6 bg-black/60 rounded-2xl p-4 backdrop-blur border border-white/10">
             <div className="font-semibold">{albumTitle}</div>
             <div className="text-white/70 text-sm">
-              Эксклюзивная коллекция из 10 NFT долей
+              Exclusive collection of 10 NFT shares
             </div>
           </div>
         </div>
@@ -1290,37 +1256,35 @@ export default function App() {
 
       <section className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-          <div className="text-lg font-semibold">Что это за сайт</div>
+          <div className="text-lg font-semibold">What This Site Is</div>
           <p className="text-white/80 text-sm mt-2 leading-relaxed">
-            Платформа для токенизации агропродукции. Партии товаров выпускаются
-            как NFT на Solana. Покупатели могут инвестировать, предлагать цену и
-            получать выручку после продажи, а фабрики — видеть аналитику и
-            управлять спросом.
+            A platform for tokenizing agricultural products. Product batches are
+            issued as NFTs on Solana. Buyers can invest, make offers, and earn
+            revenue after sales, while factories can view analytics and manage
+            demand.
           </p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-          <div className="text-lg font-semibold">Что можно делать</div>
+          <div className="text-lg font-semibold">What You Can Do</div>
           <ul className="text-white/80 text-sm mt-2 space-y-1 list-disc list-inside">
-            <li>Покупать NFT‑доли партий продукции.</li>
-            <li>Отправлять офферы с собственной ценой.</li>
-            <li>Выпускать партии (для фабрик) и выпускать NFT.</li>
-            <li>Смотреть аналитику продаж и воронку офферов.</li>
+            <li>Buy NFT shares of production batches.</li>
+            <li>Send offers with your own price.</li>
+            <li>Create batches (for factories) and issue NFTs.</li>
+            <li>View sales analytics and offer funnels.</li>
           </ul>
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-          <div className="text-lg font-semibold">Ограничения</div>
+          <div className="text-lg font-semibold">Limitations</div>
           <ul className="text-white/70 text-sm mt-2 space-y-1 list-disc list-inside">
-            <li>Демо‑версия: транзакции эмулируются.</li>
-            <li>Нельзя размещать нелегальную продукцию.</li>
-            <li>
-              Требуется соблюдение требований безопасности пищевых продуктов.
-            </li>
+            <li>Demo version: transactions are simulated.</li>
+            <li>Illegal products cannot be listed.</li>
+            <li>Compliance with food safety standards is required.</li>
           </ul>
         </div>
       </section>
 
       <section className="mt-12">
-        <h2 className="text-xl font-semibold mb-4">Партнёры и спонсоры</h2>
+        <h2 className="text-xl font-semibold mb-4">Partners and Sponsors</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 items-center">
           {[
             "/Zhambylkus-logo.png",
@@ -1339,7 +1303,7 @@ export default function App() {
       </section>
 
       <section className="mt-12">
-        <h2 className="text-xl font-semibold mb-4">Птицофабрики</h2>
+        <h2 className="text-xl font-semibold mb-4">Poultry Farms</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {farms.slice(0, 5).map((f) => (
             <button
@@ -1360,9 +1324,7 @@ export default function App() {
                 <div className="font-semibold">{f.name}</div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur p-3 border-t border-white/10">
-                <div className="text-white/80 text-xs">
-                  От фермы до прилавка
-                </div>
+                <div className="text-white/80 text-xs">From farm to shelf</div>
               </div>
             </button>
           ))}
@@ -1373,7 +1335,7 @@ export default function App() {
 
   const Farms = () => (
     <Shell>
-      <h2 className="text-2xl font-bold mb-6">Птицофабрики и продукция</h2>
+      <h2 className="text-2xl font-bold mb-6">Poultry Farms and Products</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {farms.map((farm) => {
           const farmNfts = nfts.filter((n) => n.farmId === farm.id);
@@ -1401,9 +1363,9 @@ export default function App() {
               <div className="p-4">
                 <div className="flex items-center justify-between text-sm text-white/70">
                   <div>
-                    Продано партий: {farmSold}/{farmNfts.length}
+                    Batches sold: {farmSold}/{farmNfts.length}
                   </div>
-                  <div>Собрано: {fmtSOL(farmRaised)}</div>
+                  <div>Raised: {fmtSOL(farmRaised)}</div>
                 </div>
                 <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {farmNfts.map((n) => (
@@ -1423,14 +1385,14 @@ export default function App() {
                           <div className="text-sm">{fmtSOL(n.priceSOL)}</div>
                           {n.owned ? (
                             <span className="px-2 py-1 text-xs rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                              Куплено
+                              Purchased
                             </span>
                           ) : (
                             <button
                               onClick={() => buyNft(n.id)}
                               className="px-3 py-1.5 rounded-lg bg-lime-400 hover:bg-lime-300 text-black text-sm font-semibold"
                             >
-                              Купить
+                              Buy
                             </button>
                           )}
                         </div>
@@ -1445,7 +1407,6 @@ export default function App() {
       </div>
     </Shell>
   );
-
   const Album = () => (
     <Shell>
       <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
@@ -1456,7 +1417,7 @@ export default function App() {
             className="rounded-3xl w-full shadow-xl"
           />
           <h2 className="mt-4 text-2xl font-bold">{albumTitle}</h2>
-          <div className="mt-2 text-white/70">Продукция</div>
+          <div className="mt-2 text-white/70">Products</div>
           <ul className="mt-2 space-y-1 text-sm text-white/90">
             {tracks.map((tr) => (
               <li
@@ -1471,9 +1432,9 @@ export default function App() {
         </div>
         <div>
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-semibold">Партии продукции (NFT)</h3>
+            <h3 className="text-xl font-semibold">Product Batches (NFT)</h3>
             <div className="text-sm text-white/70">
-              Продано: {soldCount}/{nfts.length} • Собрано: {fmtSOL(raisedSOL)}
+              Sold: {soldCount}/{nfts.length} • Raised: {fmtSOL(raisedSOL)}
             </div>
           </div>
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -1491,7 +1452,7 @@ export default function App() {
                   <div className="font-semibold">{n.name}</div>
                   <div className="text-white/60 text-xs mt-1">{n.caption}</div>
                   <div className="text-white/70 text-sm mt-1">
-                    Цена: {n.priceSOL} SOL
+                    Price: {n.priceSOL} SOL
                   </div>
                   <button
                     disabled={n.owned || transactionStatus === "pending"}
@@ -1505,17 +1466,17 @@ export default function App() {
                     }`}
                   >
                     {n.owned
-                      ? "Куплено"
+                      ? "Purchased"
                       : transactionStatus === "pending"
-                      ? "Покупка..."
-                      : "Купить"}
+                      ? "Purchasing..."
+                      : "Buy"}
                   </button>
                   {!n.owned && (
                     <button
                       onClick={() => openOfferModal(n.id)}
                       className="mt-2 w-full px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-sm"
                     >
-                      Предложить цену
+                      Make an Offer
                     </button>
                   )}
                 </div>
@@ -1527,13 +1488,13 @@ export default function App() {
             lastPurchase && (
               <div className="mt-6 rounded-2xl border border-green-400/40 bg-green-400/10 p-4">
                 <div className="font-semibold text-green-300">
-                  Покупка подтверждена
+                  Purchase Confirmed
                 </div>
                 <div className="text-xs text-white/70 mt-1">
                   NFT ID: {lastPurchase.id}
                 </div>
                 <div className="text-xs text-white/70 mt-1">
-                  Покупатель: {phantomPubkey}
+                  Buyer: {phantomPubkey}
                 </div>
                 <div className="text-xs text-white/70 mt-1 break-all">
                   TX: {transactionHash}
@@ -1544,9 +1505,9 @@ export default function App() {
         {offerModal.open && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 modal-fade">
             <div className="w-full max-w-md rounded-2xl border border-white/10 bg-[#0b0014] p-6">
-              <div className="text-lg font-semibold mb-2">Предложить цену</div>
+              <div className="text-lg font-semibold mb-2">Make an Offer</div>
               <div className="text-white/70 text-sm mb-3">
-                Введите вашу цену за NFT (SOL)
+                Enter your price for the NFT (in SOL)
               </div>
               <input
                 type="number"
@@ -1561,13 +1522,13 @@ export default function App() {
                   onClick={() => setOfferModal({ open: false, nftId: null })}
                   className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20"
                 >
-                  Отмена
+                  Cancel
                 </button>
                 <button
                   onClick={submitOffer}
                   className="px-4 py-2 rounded-xl bg-lime-400 text-black font-semibold"
                 >
-                  Отправить
+                  Send
                 </button>
               </div>
             </div>
@@ -1576,7 +1537,6 @@ export default function App() {
       </div>
     </Shell>
   );
-
   const Dashboard = () => {
     const owned = nfts.filter((n) => n.owned).map((n) => `#${n.id}`);
     const myOffers = user
@@ -1586,16 +1546,17 @@ export default function App() {
       : [];
     return (
       <Shell>
-        <h2 className="text-2xl font-bold">Кабинет</h2>
+        <h2 className="text-2xl font-bold">Dashboard</h2>
         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div className="text-white/70 text-sm">Ваши NFT‑продукты</div>
+            <div className="text-white/70 text-sm">Your NFT Products</div>
             <div className="mt-1 text-xl font-semibold">
               NFT {owned.length > 0 ? owned.join(", ") : "—"}
             </div>
           </div>
+
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div className="text-white/70 text-sm">Баланс доходов</div>
+            <div className="text-white/70 text-sm">Royalty Balance</div>
             <div className="mt-1 text-3xl font-black text-lime-400">
               {royaltyBalance}
             </div>
@@ -1604,11 +1565,14 @@ export default function App() {
               disabled={transactionStatus === "pending"}
               className="mt-3 w-full px-4 py-2 rounded-xl bg-fuchsia-500 hover:bg-fuchsia-600 font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {transactionStatus === "pending" ? "Вывод..." : "Вывести доход"}
+              {transactionStatus === "pending"
+                ? "Withdrawing..."
+                : "Withdraw Income"}
             </button>
           </div>
+
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div className="text-white/70 text-sm">Симулировать выручку</div>
+            <div className="text-white/70 text-sm">Simulate Revenue</div>
             <div className="mt-1 flex gap-2">
               {[5, 10, 20].map((v) => (
                 <button
@@ -1622,8 +1586,9 @@ export default function App() {
               ))}
             </div>
           </div>
+
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div className="text-white/70 text-sm">Баланс кошелька (SOL)</div>
+            <div className="text-white/70 text-sm">Wallet Balance (SOL)</div>
             <div className="mt-1 text-3xl font-black">
               {walletSolBalance.toFixed(2)} SOL
             </div>
@@ -1637,18 +1602,19 @@ export default function App() {
               }}
               className="mt-3 w-full px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 font-semibold"
             >
-              Вывод на реквизиты (демо)
+              Withdraw to Bank (Demo)
             </button>
           </div>
         </div>
+
         <div className="mt-6">
-          <div className="text-white/80 mb-2">История выплат</div>
+          <div className="text-white/80 mb-2">Payout History</div>
           <div className="overflow-hidden rounded-2xl border border-white/10">
             <table className="w-full text-sm">
               <thead className="bg-white/10">
                 <tr>
-                  <th className="text-left p-3">Дата</th>
-                  <th className="text-left p-3">Сумма ROYALTY</th>
+                  <th className="text-left p-3">Date</th>
+                  <th className="text-left p-3">Amount (ROYALTY)</th>
                 </tr>
               </thead>
               <tbody>
@@ -1662,15 +1628,16 @@ export default function App() {
             </table>
           </div>
         </div>
+
         <div className="mt-6">
-          <div className="text-white/80 mb-2">Мои предложения</div>
+          <div className="text-white/80 mb-2">My Offers</div>
           <div className="rounded-2xl border border-white/10 overflow-hidden">
             <table className="w-full text-sm">
               <thead className="bg-white/10">
                 <tr>
                   <th className="text-left p-3">NFT</th>
-                  <th className="text-left p-3">Цена (SOL)</th>
-                  <th className="text-left p-3">Статус</th>
+                  <th className="text-left p-3">Price (SOL)</th>
+                  <th className="text-left p-3">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -1684,7 +1651,7 @@ export default function App() {
                 {myOffers.length === 0 && (
                   <tr>
                     <td className="p-3 text-white/60" colSpan={3}>
-                      Предложений пока нет
+                      No offers yet
                     </td>
                   </tr>
                 )}
@@ -1692,15 +1659,16 @@ export default function App() {
             </table>
           </div>
         </div>
+
         <div className="mt-6">
-          <div className="text-white/80 mb-2">Заявки на вывод (демо)</div>
+          <div className="text-white/80 mb-2">Withdrawal Requests (Demo)</div>
           <div className="overflow-hidden rounded-2xl border border-white/10">
             <table className="w-full text-sm">
               <thead className="bg-white/10">
                 <tr>
-                  <th className="text-left p-3">Дата</th>
-                  <th className="text-left p-3">Сумма (SOL)</th>
-                  <th className="text-left p-3">Статус</th>
+                  <th className="text-left p-3">Date</th>
+                  <th className="text-left p-3">Amount (SOL)</th>
+                  <th className="text-left p-3">Status</th>
                   <th className="text-left p-3">ETA</th>
                 </tr>
               </thead>
@@ -1716,7 +1684,7 @@ export default function App() {
                 {pendingFiat.length === 0 && (
                   <tr>
                     <td className="p-3 text-white/60" colSpan={4}>
-                      Пока нет заявок
+                      No withdrawal requests yet
                     </td>
                   </tr>
                 )}
@@ -1727,7 +1695,6 @@ export default function App() {
       </Shell>
     );
   };
-
   const FactoryAnalytics = () => {
     const farmNfts =
       user?.role === "factory" && user.farmId
@@ -1757,29 +1724,29 @@ export default function App() {
 
     const recommendation =
       conversion < 0.3
-        ? "Низкая конверсия. Усильте продвижение: баннеры на главной, акции -10%, посты в соцсетях."
+        ? "Low conversion rate. Boost promotion: homepage banners, 10% discounts, social media posts."
         : conversion > 0.7
-        ? "Высокая конверсия. Протестируйте повышение цены на 10–15% и расширьте объём."
-        : "Стабильные продажи. Продолжайте текущую стратегию и протестируйте коллаборации.";
+        ? "High conversion rate. Try raising prices by 10–15% and expanding production."
+        : "Stable sales. Continue your current strategy and test collaborations.";
 
     return (
       <Shell>
-        <h2 className="text-2xl font-bold">Аналитика птицофабрики</h2>
+        <h2 className="text-2xl font-bold">Factory Analytics</h2>
         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div className="text-white/70 text-sm">Тариф</div>
+            <div className="text-white/70 text-sm">Plan</div>
             <div className="mt-1 text-lg font-semibold">{tariffPlan}</div>
             <div className="text-white/70 text-sm">
-              Комиссия платформы: {platformFeePct}%
+              Platform fee: {platformFeePct}%
             </div>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div className="text-white/70 text-sm">Продажи</div>
+            <div className="text-white/70 text-sm">Sales</div>
             <div className="mt-1 text-3xl font-black text-lime-400">{sold}</div>
-            <div className="text-white/70 text-sm">из {total} партий</div>
+            <div className="text-white/70 text-sm">out of {total} batches</div>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div className="text-white/70 text-sm">Средняя цена</div>
+            <div className="text-white/70 text-sm">Average Price</div>
             <div className="mt-1 text-3xl font-black">
               {avgPrice.toFixed(2)} SOL
             </div>
@@ -1788,9 +1755,9 @@ export default function App() {
 
         <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4 lg:col-span-2">
-            <div className="text-white/80 mb-2">Продажи по продуктам</div>
+            <div className="text-white/80 mb-2">Sales by Product</div>
             {productEntries.length === 0 ? (
-              <div className="text-white/60 text-sm">Пока нет продаж</div>
+              <div className="text-white/60 text-sm">No sales yet</div>
             ) : (
               <div className="space-y-3">
                 {productEntries.map(([name, count]) => {
@@ -1814,12 +1781,12 @@ export default function App() {
             )}
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div className="text-white/80 mb-2">Рекомендации</div>
+            <div className="text-white/80 mb-2">Recommendations</div>
             <div className="text-white/90 text-sm leading-relaxed">
               {recommendation}
             </div>
             <div className="mt-3 text-xs text-white/60">
-              Конверсия: {(conversion * 100).toFixed(0)}%
+              Conversion rate: {(conversion * 100).toFixed(0)}%
             </div>
           </div>
         </div>
@@ -1864,31 +1831,29 @@ export default function App() {
     const handleCreate = (e: React.FormEvent) => {
       e.preventDefault();
       alert(
-        "Партия сохранена (демо). Далее: загрузка в IPFS/Arweave и запись on-chain."
+        "Batch saved (demo). Next steps: upload to IPFS/Arweave and write on-chain."
       );
     };
 
     return (
       <Shell>
-        <h2 className="text-2xl font-bold">Кабинет птицофабрики</h2>
+        <h2 className="text-2xl font-bold">Factory Dashboard</h2>
         <form
           onSubmit={handleCreate}
           className="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6"
         >
           <div className="space-y-4">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-white/80 mb-2">Выпустить партию</div>
-              <label className="text-sm text-white/70">
-                Название птицофабрики
-              </label>
+              <div className="text-white/80 mb-2">Release a Batch</div>
+              <label className="text-sm text-white/70">Factory Name</label>
               <input
                 value={albumTitle}
                 onChange={(e) => setAlbumTitle(e.target.value)}
                 className="mt-1 w-full rounded-xl bg-black/50 border border-white/10 p-2 outline-none"
-                placeholder="Название птицофабрики"
+                placeholder="Factory name"
               />
               <label className="text-sm text-white/70 mt-3 block">
-                URL фото
+                Image URL
               </label>
               <input
                 value={albumCover}
@@ -1897,7 +1862,7 @@ export default function App() {
                 placeholder="https://…"
               />
               <label className="text-sm text-white/70 mt-3 block">
-                Продукция (по строке)
+                Products (one per line)
               </label>
               <textarea
                 value={tracks.map((t) => t.title).join("\n")}
@@ -1910,30 +1875,30 @@ export default function App() {
                   )
                 }
                 className="mt-1 w-full rounded-xl bg-black/50 border border-white/10 p-2 h-32 resize-y outline-none"
-                placeholder={"Голень\nЯйцо\nКрылышки"}
+                placeholder={"Drumstick\nEggs\nWings"}
               />
               <button
                 type="submit"
                 className="mt-4 w-full px-4 py-2 rounded-xl bg-white text-black font-semibold"
               >
-                Сохранить партию (локально)
+                Save Batch (local)
               </button>
             </div>
           </div>
           <div className="space-y-4">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-white/80 mb-2">Инструкция</div>
+              <div className="text-white/80 mb-2">Instructions</div>
               <ol className="list-decimal list-inside text-sm text-white/80 space-y-1">
-                <li>Проверьте название фабрики и изображения.</li>
-                <li>Укажите список продукции построчно.</li>
-                <li>Сохраните партию и при необходимости выпустите NFT.</li>
-                <li>Отвечайте на офферы покупателей ниже.</li>
+                <li>Check the factory name and images.</li>
+                <li>List your products, one per line.</li>
+                <li>Save the batch and mint NFTs if needed.</li>
+                <li>Respond to buyer offers below.</li>
               </ol>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-white/80 mb-2">Продажи по продуктам</div>
+              <div className="text-white/80 mb-2">Sales by Product</div>
               {productEntries.length === 0 ? (
-                <div className="text-white/60 text-sm">Пока нет продаж</div>
+                <div className="text-white/60 text-sm">No sales yet</div>
               ) : (
                 <div className="space-y-3">
                   {productEntries.map(([name, count]) => {
@@ -1958,13 +1923,13 @@ export default function App() {
               )}
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-white/80 mb-2">Воронка офферов</div>
+              <div className="text-white/80 mb-2">Offers Funnel</div>
               <div className="space-y-2 text-sm">
                 {(
                   [
-                    ["В ожидании", offersFunnel.pending, "bg-white/10"],
-                    ["Принято", offersFunnel.accepted, "bg-emerald-500/20"],
-                    ["Отгружено", offersFunnel.shipped, "bg-fuchsia-500/20"],
+                    ["Pending", offersFunnel.pending, "bg-white/10"],
+                    ["Accepted", offersFunnel.accepted, "bg-emerald-500/20"],
+                    ["Shipped", offersFunnel.shipped, "bg-fuchsia-500/20"],
                   ] as const
                 ).map(([label, val, bar]) => (
                   <div key={label}>
@@ -1986,7 +1951,7 @@ export default function App() {
               </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-white/80 mb-2">Выручка по датам (демо)</div>
+              <div className="text-white/80 mb-2">Revenue by Date (demo)</div>
               <svg viewBox="0 0 200 60" className="w-full h-16">
                 <polyline
                   fill="none"
@@ -2002,16 +1967,14 @@ export default function App() {
                 />
               </svg>
               <div className="text-xs text-white/60">
-                Источник: История выплат
+                Source: Payout History
               </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-white/80 mb-2">Доли выручки</div>
+              <div className="text-white/80 mb-2">Revenue Shares</div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-sm text-white/70">
-                    Птицофабрика (%)
-                  </label>
+                  <label className="text-sm text-white/70">Factory (%)</label>
                   <input
                     title="Type here"
                     type="number"
@@ -2021,7 +1984,7 @@ export default function App() {
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-white/70">Инвесторы (%)</label>
+                  <label className="text-sm text-white/70">Investors (%)</label>
                   <input
                     title="Type here"
                     type="number"
@@ -2032,7 +1995,7 @@ export default function App() {
                 </div>
               </div>
               <div className="text-white/60 text-sm mt-2">
-                Суммарно: {artistShare + fansShare}%
+                Total: {artistShare + fansShare}%
               </div>
               <button
                 onClick={mintAlbumNfts}
@@ -2041,21 +2004,21 @@ export default function App() {
                 className="mt-4 w-full px-4 py-2 rounded-xl bg-lime-400 text-black font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {transactionStatus === "pending"
-                  ? "Создание коллекции..."
-                  : "Выпустить NFT‑продукцию"}
+                  ? "Creating collection..."
+                  : "Mint NFT Products"}
               </button>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-white/80 mb-2">Запросы покупателей</div>
+              <div className="text-white/80 mb-2">Buyer Requests</div>
               <div className="rounded-2xl overflow-hidden border border-white/10">
                 <table className="w-full text-sm">
                   <thead className="bg-white/10">
                     <tr>
                       <th className="text-left p-3">NFT</th>
-                      <th className="text-left p-3">Покупатель</th>
-                      <th className="text-left p-3">Цена (SOL)</th>
-                      <th className="text-left p-3">Статус</th>
-                      <th className="text-left p-3">Действия</th>
+                      <th className="text-left p-3">Buyer</th>
+                      <th className="text-left p-3">Price (SOL)</th>
+                      <th className="text-left p-3">Status</th>
+                      <th className="text-left p-3">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -2072,13 +2035,13 @@ export default function App() {
                                 onClick={() => acceptOffer(o.id)}
                                 className="px-3 py-1 rounded-lg bg-lime-400 text-black"
                               >
-                                Принять
+                                Accept
                               </button>
                               <button
                                 onClick={() => declineOffer(o.id)}
                                 className="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20"
                               >
-                                Отклонить
+                                Decline
                               </button>
                             </>
                           )}
@@ -2087,7 +2050,7 @@ export default function App() {
                               onClick={() => shipOffer(o.id)}
                               className="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
                             >
-                              Отметить отгрузку
+                              Mark as Shipped
                             </button>
                           )}
                         </td>
@@ -2096,7 +2059,7 @@ export default function App() {
                     {incomingOffers.length === 0 && (
                       <tr>
                         <td className="p-3 text-white/60" colSpan={5}>
-                          Запросов пока нет
+                          No requests yet
                         </td>
                       </tr>
                     )}
@@ -2105,21 +2068,19 @@ export default function App() {
               </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-white/80 mb-2">Статистика</div>
+              <div className="text-white/80 mb-2">Statistics</div>
               <div className="grid grid-cols-3 gap-3 text-center">
                 <div className="bg-white/5 rounded-xl p-3">
                   <div className="text-2xl font-black">{soldCountFarm}</div>
-                  <div className="text-xs text-white/70">NFT продано</div>
+                  <div className="text-xs text-white/70">NFTs Sold</div>
                 </div>
                 <div className="bg-white/5 rounded-xl p-3">
                   <div className="text-2xl font-black">{raisedSOLFarm}</div>
-                  <div className="text-xs text-white/70">Собрано SOL</div>
+                  <div className="text-xs text-white/70">SOL Raised</div>
                 </div>
                 <div className="bg-white/5 rounded-xl p-3">
                   <div className="text-2xl font-black">{paidToFans}</div>
-                  <div className="text-xs text-white/70">
-                    Выплачено инвесторам
-                  </div>
+                  <div className="text-xs text-white/70">Paid to Investors</div>
                 </div>
               </div>
             </div>
@@ -2128,7 +2089,6 @@ export default function App() {
       </Shell>
     );
   };
-
   if (!user) return <AuthScreen />;
 
   return (
@@ -2143,7 +2103,7 @@ export default function App() {
         ) : (
           <Shell>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-              Доступ только для птицофабрик.
+              Access restricted to poultry farms only.
             </div>
           </Shell>
         ))}
@@ -2153,7 +2113,7 @@ export default function App() {
         ) : (
           <Shell>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-              Доступ только для птицофабрик.
+              Access restricted to poultry farms only.
             </div>
           </Shell>
         ))}

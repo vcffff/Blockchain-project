@@ -32,14 +32,14 @@ export default function WithdrawModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 modal-fade">
       <div className="w-full max-w-lg rounded-2xl border border-white/10 bg-[#0b0014] p-6">
         <div className="text-lg font-semibold mb-2">
-          Вывод на банковские реквизиты
+          Withdraw to bank details
         </div>
         <div className="text-white/70 text-sm mb-4">
-          Данные конфиденциальны и не сохраняются (демо).
+          Data is confidential and not stored (demo).
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
-            <label className="text-sm text-white/70">Сумма (SOL)</label>
+            <label className="text-sm text-white/70">Amount (SOL)</label>
             <input
               type="text"
               inputMode="decimal"
@@ -58,12 +58,12 @@ export default function WithdrawModal({
               className="mt-1 w-full rounded-xl bg-black/50 border border-white/10 p-3 outline-none"
             />
             <div className="text-xs text-white/50 mt-1">
-              Доступно: {balance.toFixed(2)} SOL
+              Available: {balance.toFixed(2)} SOL
             </div>
           </div>
           <div>
             <label className="text-sm text-white/70">
-              Получатель (ФИО/Компания)
+              Beneficiary (Name/Company)
             </label>
             <input
               value={nameDraft}
@@ -72,7 +72,7 @@ export default function WithdrawModal({
             />
           </div>
           <div className="md:col-span-2">
-            <label className="text-sm text-white/70">IBAN/Счёт</label>
+            <label className="text-sm text-white/70">IBAN/Account</label>
             <input
               value={ibanDraft}
               onChange={(e) => setIbanDraft(e.target.value)}
@@ -80,7 +80,7 @@ export default function WithdrawModal({
             />
             {ibanDraft && (
               <div className="text-xs text-white/50 mt-1">
-                Будет отправлено на: {ibanDraft.slice(0, 4)}****
+                Will be sent to: {ibanDraft.slice(0, 4)}****
                 {ibanDraft.slice(-4)}
               </div>
             )}
@@ -92,19 +92,19 @@ export default function WithdrawModal({
             disabled={submitting}
             className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20"
           >
-            Отмена
+            Cancel
           </button>
           <button
             onClick={onConfirm}
             disabled={submitting}
             className="px-4 py-2 rounded-xl bg-lime-400 text-black font-semibold disabled:opacity-60"
           >
-            {submitting ? "Проверяем…" : "Подтвердить вывод"}
+            {submitting ? "Checking…" : "Confirm withdrawal"}
           </button>
         </div>
         <div className="text-xs text-white/50 mt-2">
-          После подтверждения: "Заявка принята. Поступит в течение 2 рабочих
-          дней"
+          After confirmation: "Request accepted. Funds will arrive within 2
+          business days"
         </div>
       </div>
     </div>
