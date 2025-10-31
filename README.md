@@ -22,7 +22,13 @@ Landing Page:
 https://chickchain.vercel.app/
 
 YouTube Video:
-(link to be added)
+
+https://youtu.be/LYsJ236HXfs?si=DtAOHBO-u3Y6FcGT
+
+AgroLink Demo Video:
+
+https://youtu.be/PBfj1WXr4-0
+
 
 # Problem and solution
 The poultry industry is a $400+ billion global market, but it remains opaque.
