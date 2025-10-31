@@ -22,11 +22,9 @@ Landing Page:
 https://chickchain.vercel.app/
 
 YouTube Video:
-
 https://youtu.be/LYsJ236HXfs?si=DtAOHBO-u3Y6FcGT
 
 AgroLink Demo Video:
-
 https://youtu.be/PBfj1WXr4-0
 
 
